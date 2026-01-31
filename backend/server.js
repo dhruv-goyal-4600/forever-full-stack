@@ -17,13 +17,8 @@ connectCloudinary()
 // middlewares
 app.use(express.json())
 app.use(cors({
- origin: [
-    "https://forever-full-frontend.vercel.app",
-    "https://forever-full-stack-frontend-tan.vercel.app",
-    "http://localhost:5173"
-  ],
-  allowedHeaders: ["Content-Type", "token"],
-  methods: ["GET", "POST", "PUT", "DELETE"]
+  origin: true,
+  allowedHeaders: ["Content-Type", "token"]
 }));
 
 app.options("*", cors());
@@ -37,5 +32,5 @@ app.use('/api/order',orderRouter)
 app.get('/',(req,res)=>{
     res.send("API Working")
 })
+export default app;
 
-app.listen(port, ()=> console.log('Server started on PORT : '+ port))
